@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Pokemon from "./Pokemon";
-import Pokedex from "./Pokedex";
+import Pokemon from "./pages/Pokemon";
+import Pokedex from "./pages/Pokedex";
 
 function App() {
   return (

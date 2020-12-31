@@ -2,24 +2,24 @@ import { Typography, Link, CircularProgress, Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { capitalize } from "./utils/capitalize";
+import { capitalize } from "../utils/capitalize";
 
 export default function Pokemon(props) {
   const { history } = props;
   const [pokemon, setPokemon] = useState(null);
 
-  const fetchPokemon = async () => {
-    const { pokemonId } = props.match.params;
-    const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
-    );
-    setPokemon(response.data);
-    console.log();
-  };
-
   useEffect(() => {
+    const fetchPokemon = async () => {
+      const { pokemonId } = props.match.params;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
+      );
+      setPokemon(response.data);
+      console.log();
+    };
+
     fetchPokemon();
-  }, []);
+  }, [props.match.params]);
 
   const generatePokemonJSX = () => {
     const { name, id, species, height, weight, types, sprites } = pokemon;
