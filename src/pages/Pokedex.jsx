@@ -33,7 +33,7 @@ const Pokedex = () => {
   useEffect(() => {
     const fetchPokemon = async () => {
       const data = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=152"
+        "https://pokeapi.co/api/v2/pokemon?limit=20"
       );
       const pokemon = data.data.results;
       setData(pokemon);
@@ -50,7 +50,7 @@ const Pokedex = () => {
             {pokemonData.map(
               (pokemon, idx) =>
                 pokemon.name.includes(filter) && (
-                  <PokemonCard key={idx} pokemon={pokemon} idx={idx + 1} />
+                  <PokemonCard key={idx} pokemon={{...pokemon, idx: idx+1}}/>
                 )
             )}
           </Grid>

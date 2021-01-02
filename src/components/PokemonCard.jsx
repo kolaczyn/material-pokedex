@@ -23,22 +23,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PokemonCard(props) {
-  const history = useHistory()
-  const { pokemon, idx} = props;
+export default function PokemonCard({pokemon}) {
   const classes = useStyles();
-  const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idx}.png`;
+  const history = useHistory()
+  const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.idx}.png`;
   return (
     <Grid item xs={4}>
       <Card>
-        <CardActionArea onClick={() => history.push(`/${idx}`)}>
+        <CardActionArea onClick={() => history.push(`/${pokemon.idx}`)}>
           <CardMedia
             className={classes.cardMedia}
             image={sprite}
             style={{ width: "130px", height: "130px" }}
           ></CardMedia>
           <CardContent>
-            <Typography className={classes.cardContent}>{`${idx}. ${capitalize(
+            <Typography className={classes.cardContent}>{`${pokemon.idx}. ${capitalize(
               pokemon.name
             )}`}</Typography>
           </CardContent>
